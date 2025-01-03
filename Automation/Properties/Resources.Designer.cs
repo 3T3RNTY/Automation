@@ -69,15 +69,5 @@ namespace Automation.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Pictogrammers_Material_Alphabet_Alpha_m_box_32 {
-            get {
-                object obj = ResourceManager.GetObject("Pictogrammers-Material-Alphabet-Alpha-m-box.32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
