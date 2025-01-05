@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery13 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery14 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery15 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery3 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.gbSatislar = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSatisListeleme = new System.Windows.Forms.Button();
             this.gbSatisHesap = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -241,7 +242,7 @@
             this.stokSil = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.satisMainGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.satısEkle = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.satisEkle = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.satisSil = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.satisListele = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlSeparator4 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
@@ -251,7 +252,6 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.btnSatisListeleme = new System.Windows.Forms.Button();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbSatislar)).BeginInit();
             this.gbSatislar.SuspendLayout();
@@ -377,6 +377,18 @@
             this.groupBox2.Size = new System.Drawing.Size(304, 838);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
+            // 
+            // btnSatisListeleme
+            // 
+            this.btnSatisListeleme.BackColor = System.Drawing.Color.White;
+            this.btnSatisListeleme.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSatisListeleme.Location = new System.Drawing.Point(92, 442);
+            this.btnSatisListeleme.Name = "btnSatisListeleme";
+            this.btnSatisListeleme.Size = new System.Drawing.Size(187, 23);
+            this.btnSatisListeleme.TabIndex = 16;
+            this.btnSatisListeleme.Text = "Tüm Satışları Listele";
+            this.btnSatisListeleme.UseVisualStyleBackColor = false;
+            this.btnSatisListeleme.Click += new System.EventHandler(this.btnSatisListeleme_Click);
             // 
             // gbSatisHesap
             // 
@@ -576,10 +588,10 @@
             // 
             this.SatislarSource.ConnectionName = "database";
             this.SatislarSource.Name = "SatislarSource";
-            customSqlQuery13.Name = "Query";
-            customSqlQuery13.Sql = "SELECT * FROM Satislar WHERE IPTAL = \'Hayır\'";
+            customSqlQuery1.Name = "Query";
+            customSqlQuery1.Sql = "SELECT * FROM Satislar WHERE IPTAL = \'Hayır\'";
             this.SatislarSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery13});
+            customSqlQuery1});
             this.SatislarSource.ResultSchemaSerializable = resources.GetString("SatislarSource.ResultSchemaSerializable");
             // 
             // gridView5
@@ -866,10 +878,10 @@
             // 
             this.UrunlerSource.ConnectionName = "database";
             this.UrunlerSource.Name = "UrunlerSource";
-            customSqlQuery14.Name = "Query";
-            customSqlQuery14.Sql = "SELECT * FROM Urunler";
+            customSqlQuery2.Name = "Query";
+            customSqlQuery2.Sql = "SELECT * FROM Urunler";
             this.UrunlerSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery14});
+            customSqlQuery2});
             this.UrunlerSource.ResultSchemaSerializable = resources.GetString("UrunlerSource.ResultSchemaSerializable");
             // 
             // gridView4
@@ -1362,10 +1374,10 @@
             // 
             this.KullanicilarSource.ConnectionName = "database";
             this.KullanicilarSource.Name = "KullanicilarSource";
-            customSqlQuery15.Name = "Query";
-            customSqlQuery15.Sql = "SELECT * FROM Kullanicilar";
+            customSqlQuery3.Name = "Query";
+            customSqlQuery3.Sql = "SELECT * FROM Kullanicilar";
             this.KullanicilarSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery15});
+            customSqlQuery3});
             this.KullanicilarSource.ResultSchemaSerializable = resources.GetString("KullanicilarSource.ResultSchemaSerializable");
             // 
             // gridView1
@@ -2615,7 +2627,7 @@
             // satisMainGroup
             // 
             this.satisMainGroup.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.satısEkle,
+            this.satisEkle,
             this.satisSil,
             this.satisListele,
             this.accordionControlSeparator4});
@@ -2625,13 +2637,13 @@
             this.satisMainGroup.Text = "Satışlar";
             this.satisMainGroup.Visible = false;
             // 
-            // satısEkle
+            // satisEkle
             // 
-            this.satısEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("satısEkle.ImageOptions.Image")));
-            this.satısEkle.Name = "satısEkle";
-            this.satısEkle.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.satısEkle.Text = "Yeni Satış";
-            this.satısEkle.Click += new System.EventHandler(this.satısEkle_Click);
+            this.satisEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("satısEkle.ImageOptions.Image")));
+            this.satisEkle.Name = "satisEkle";
+            this.satisEkle.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.satisEkle.Text = "Yeni Satış";
+            this.satisEkle.Click += new System.EventHandler(this.satısEkle_Click);
             // 
             // satisSil
             // 
@@ -2695,18 +2707,6 @@
             this.accordionControlElement5.Name = "accordionControlElement5";
             this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement5.Text = "Element5";
-            // 
-            // btnSatisListeleme
-            // 
-            this.btnSatisListeleme.BackColor = System.Drawing.Color.White;
-            this.btnSatisListeleme.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSatisListeleme.Location = new System.Drawing.Point(92, 442);
-            this.btnSatisListeleme.Name = "btnSatisListeleme";
-            this.btnSatisListeleme.Size = new System.Drawing.Size(187, 23);
-            this.btnSatisListeleme.TabIndex = 16;
-            this.btnSatisListeleme.Text = "Tüm Satışları Listele";
-            this.btnSatisListeleme.UseVisualStyleBackColor = false;
-            this.btnSatisListeleme.Click += new System.EventHandler(this.btnSatisListeleme_Click);
             // 
             // MainMenu
             // 
@@ -2910,7 +2910,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement stokSil;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement satisMainGroup;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement satısEkle;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement satisEkle;
         private DevExpress.XtraBars.Navigation.AccordionControlElement satisSil;
         private DevExpress.XtraBars.Navigation.AccordionControlElement satisListele;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator4;
