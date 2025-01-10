@@ -10,7 +10,8 @@ namespace Automation
     
     public class Urun
     {
-        string connectionString = @"Data Source= ..\..\Database\database.db; version=3;";
+        // Veritabanı Bağlantısı
+        string connectionString = @"Data Source= ..\..\database.db; version=3;";
 
         private int id;
         private string marka;
@@ -32,6 +33,7 @@ namespace Automation
         public decimal IndirimliFiyat { get { return indirimliFiyat; } set { indirimliFiyat = SatisFiyat - (SatisFiyat * IndirimOrani / 100); } }
         public int Stok { get { return stok; } set { stok = value; } }
 
+        // Ürün Nesnesi için Yapıcı Metotlar
         public Urun()
         {
 
@@ -71,6 +73,7 @@ namespace Automation
         }
 
 
+        // Veritabanına Yeni Ürün Ekleyen Metot
         public string Ekle()
         {
             try
@@ -97,6 +100,7 @@ namespace Automation
             }
            
         }
+        // Veritabanındaki Ürün Bilgilerini Değiştiren Metot
         public string Degistir()
         {
             try
@@ -122,6 +126,7 @@ namespace Automation
                 return ex.ToString();
             }
         }
+        // Veritabanındaki Ürün Bilgilerini Silen Metot
         public string Sil()
         {
             try

@@ -28,6 +28,7 @@ namespace Automation
         public decimal SatisFiyat { get => satisFiyat; set => satisFiyat = value; }
         public string Iptal { get => iptal; set => iptal = value; }
 
+        // Satış nesnesini oluşturmak için Yapıcı Metotlar
         public Satis() { }
         public Satis(int id, string tarih, int urunId, string urunMarka, string urunAd, int miktar, decimal alisFiyat, decimal satisFiyat, string iptal)
         {

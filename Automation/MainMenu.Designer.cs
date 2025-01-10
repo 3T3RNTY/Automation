@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery3 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.gbSatislar = new DevExpress.XtraEditors.GroupControl();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
@@ -56,7 +52,6 @@
             this.cbSatisListeArama = new System.Windows.Forms.ComboBox();
             this.tbSatisListeArama = new System.Windows.Forms.TextBox();
             this.gcSatislar = new DevExpress.XtraGrid.GridControl();
-            this.SatislarSource = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarih = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -82,7 +77,6 @@
             this.cbSatisArama = new System.Windows.Forms.ComboBox();
             this.tbSatisArama = new System.Windows.Forms.TextBox();
             this.gcSatisListe = new DevExpress.XtraGrid.GridControl();
-            this.UrunlerSource = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,7 +122,6 @@
             this.cbCalisanArama = new System.Windows.Forms.ComboBox();
             this.tbCalisanArama = new System.Windows.Forms.TextBox();
             this.calisanList = new DevExpress.XtraGrid.GridControl();
-            this.KullanicilarSource = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKullaniciAdi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -382,7 +375,7 @@
             // 
             this.btnSatisListeleme.BackColor = System.Drawing.Color.White;
             this.btnSatisListeleme.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSatisListeleme.Location = new System.Drawing.Point(92, 442);
+            this.btnSatisListeleme.Location = new System.Drawing.Point(90, 442);
             this.btnSatisListeleme.Name = "btnSatisListeleme";
             this.btnSatisListeleme.Size = new System.Drawing.Size(187, 23);
             this.btnSatisListeleme.TabIndex = 16;
@@ -400,7 +393,7 @@
             this.gbSatisHesap.Controls.Add(this.tbSatisGider);
             this.gbSatisHesap.Controls.Add(this.btnSatisHesapla);
             this.gbSatisHesap.Controls.Add(this.cbSatisHesap);
-            this.gbSatisHesap.Location = new System.Drawing.Point(10, 247);
+            this.gbSatisHesap.Location = new System.Drawing.Point(10, 250);
             this.gbSatisHesap.Name = "gbSatisHesap";
             this.gbSatisHesap.Size = new System.Drawing.Size(285, 185);
             this.gbSatisHesap.TabIndex = 15;
@@ -573,8 +566,6 @@
             // 
             // gcSatislar
             // 
-            this.gcSatislar.DataMember = "Query";
-            this.gcSatislar.DataSource = this.SatislarSource;
             this.gcSatislar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcSatislar.Location = new System.Drawing.Point(0, 0);
             this.gcSatislar.MainView = this.gridView5;
@@ -583,16 +574,6 @@
             this.gcSatislar.TabIndex = 0;
             this.gcSatislar.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
-            // 
-            // SatislarSource
-            // 
-            this.SatislarSource.ConnectionName = "database";
-            this.SatislarSource.Name = "SatislarSource";
-            customSqlQuery1.Name = "Query";
-            customSqlQuery1.Sql = "SELECT * FROM Satislar WHERE IPTAL = \'Hayır\'";
-            this.SatislarSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery1});
-            this.SatislarSource.ResultSchemaSerializable = resources.GetString("SatislarSource.ResultSchemaSerializable");
             // 
             // gridView5
             // 
@@ -863,8 +844,6 @@
             // 
             // gcSatisListe
             // 
-            this.gcSatisListe.DataMember = "Query";
-            this.gcSatisListe.DataSource = this.UrunlerSource;
             this.gcSatisListe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcSatisListe.Location = new System.Drawing.Point(0, 0);
             this.gcSatisListe.MainView = this.gridView4;
@@ -873,16 +852,6 @@
             this.gcSatisListe.TabIndex = 0;
             this.gcSatisListe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
-            // 
-            // UrunlerSource
-            // 
-            this.UrunlerSource.ConnectionName = "database";
-            this.UrunlerSource.Name = "UrunlerSource";
-            customSqlQuery2.Name = "Query";
-            customSqlQuery2.Sql = "SELECT * FROM Urunler";
-            this.UrunlerSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery2});
-            this.UrunlerSource.ResultSchemaSerializable = resources.GetString("UrunlerSource.ResultSchemaSerializable");
             // 
             // gridView4
             // 
@@ -1359,8 +1328,6 @@
             // 
             // calisanList
             // 
-            this.calisanList.DataMember = "Query";
-            this.calisanList.DataSource = this.KullanicilarSource;
             this.calisanList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calisanList.Location = new System.Drawing.Point(0, 0);
             this.calisanList.MainView = this.gridView1;
@@ -1369,16 +1336,6 @@
             this.calisanList.TabIndex = 0;
             this.calisanList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // KullanicilarSource
-            // 
-            this.KullanicilarSource.ConnectionName = "database";
-            this.KullanicilarSource.Name = "KullanicilarSource";
-            customSqlQuery3.Name = "Query";
-            customSqlQuery3.Sql = "SELECT * FROM Kullanicilar";
-            this.KullanicilarSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery3});
-            this.KullanicilarSource.ResultSchemaSerializable = resources.GetString("KullanicilarSource.ResultSchemaSerializable");
             // 
             // gridView1
             // 
@@ -1790,8 +1747,6 @@
             // 
             // urunEditList
             // 
-            this.urunEditList.DataMember = "Query";
-            this.urunEditList.DataSource = this.UrunlerSource;
             this.urunEditList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.urunEditList.Location = new System.Drawing.Point(0, 0);
             this.urunEditList.MainView = this.gridView2;
@@ -2020,8 +1975,6 @@
             // 
             // gcStokList
             // 
-            this.gcStokList.DataMember = "Query";
-            this.gcStokList.DataSource = this.UrunlerSource;
             this.gcStokList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcStokList.Location = new System.Drawing.Point(0, 0);
             this.gcStokList.MainView = this.gridView3;
@@ -2639,7 +2592,7 @@
             // 
             // satisEkle
             // 
-            this.satisEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("satısEkle.ImageOptions.Image")));
+            this.satisEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("satisEkle.ImageOptions.Image")));
             this.satisEkle.Name = "satisEkle";
             this.satisEkle.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.satisEkle.Text = "Yeni Satış";
@@ -2720,6 +2673,7 @@
             this.Controls.Add(this.yanMenu);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MainMenu";
             this.NavigationControl = this.yanMenu;
@@ -2892,7 +2846,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement hesapAyari;
         private DevExpress.XtraGrid.GridControl calisanList;
-        private DevExpress.DataAccess.Sql.SqlDataSource KullanicilarSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colKullaniciAdi;
@@ -2943,7 +2896,6 @@
         private System.Windows.Forms.Button btnHesapKaydet;
         private System.Windows.Forms.GroupBox gbHesap;
         private DevExpress.XtraGrid.GridControl urunEditList;
-        private DevExpress.DataAccess.Sql.SqlDataSource UrunlerSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colId1;
         private DevExpress.XtraGrid.Columns.GridColumn colMarka;
@@ -2998,7 +2950,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.DataAccess.Sql.SqlDataSource SatislarSource;
         private DevExpress.XtraEditors.GroupControl gbSatislar;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.GroupBox groupBox2;

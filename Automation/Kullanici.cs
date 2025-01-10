@@ -9,7 +9,8 @@ namespace Automation
 {
     public class Kullanici
     {
-        string connectionString = @"Data Source= ..\..\Database\database.db; version=3;";
+        // Veritabanı Bağlantısı
+        string connectionString = @"Data Source= ..\..\database.db; version=3;";
 
         private int id;
         private string kullaniciAdi;
@@ -35,6 +36,7 @@ namespace Automation
         public string Adres { get => adres; set => adres = value; }
         public decimal Maas { get => maas; set => maas = value; }
 
+        // Kullanıcı Nesnesi için Yapıcı Metotlar
         public Kullanici() { }
         public Kullanici(string kullaniciAdi, string sifre, string ad, string soyad, string cinsiyet, string pozisyon, string tcno, string telefon, string adres, decimal maas)
         {
@@ -64,7 +66,7 @@ namespace Automation
             Maas = maas;
         }
 
-
+        // Veritabanına Yeni Kullanıcı Ekleyen Metot
         public string Ekle()
         {
             try
@@ -90,6 +92,7 @@ namespace Automation
             }   
         }
 
+        // Veritabanındaki Bilgileri Değiştiren Metot
         public string Degistir()
         {
             try
@@ -118,6 +121,7 @@ namespace Automation
             }
         }
 
+        // Veritabanından kullanıcıyı Silen Metot
         public string Sil()
         {
             try

@@ -18,21 +18,17 @@ namespace Automation
         Kullanici kullanici = new Kullanici();
         Kullanici calisan = new Kullanici();
         Urun urun = new Urun();
-        
+
         // Veritabanı Bağlantı Adresi
-        public string connectionString = @"Data Source= ..\..\Database\database.db; version=3;";
+       
+        string connectionString = @"Data Source= ..\..\database.db; version=3;";
 
         int yetki = 0;       
 
         // Veritabanı Tablolarından Bilgi Alma Query'leri
         string urunSelectCmd = "SELECT * FROM Urunler";
         string kisiSelectCmd = "SELECT * FROM Kullanicilar";
-
-
-        SQLiteDataAdapter adapter = new SQLiteDataAdapter();
-        DataTable dataTable = new DataTable();
-
-
+        string satisListeleCmd = "SELECT * FROM Satislar";
 
         public MainMenu(Kullanici kullanici)
         {
@@ -127,15 +123,17 @@ namespace Automation
                         urunSil.Visible = false;
 
                         satisMainGroup.Visible = true;
+                        gbSatisHesap.Visible = false;
 
 
                         break;
                     }
             }
-
-            KullanicilarSource.Fill();         
-            UrunlerSource.Fill();          
-            SatislarSource.Fill();
+            // Menü Oluşturulduğunda Tabloların Doldurulması
+            KisiGuncelle();
+            UrunGuncelle();
+            StokGuncelle();
+            SatisGuncelle();          
         }
 
         #region Çalışan Menüsü
@@ -144,8 +142,6 @@ namespace Automation
         private void calisanListele_Click(object sender, EventArgs e)
         {
             gbCalisanSearch.Location = new Point(10, 10);
-
-            KullanicilarSource.Fill();
 
             gbCalisanKontrol.Show();
             gbUrunKontrol.Hide();
@@ -165,8 +161,6 @@ namespace Automation
         private void calisanEkle_Click(object sender, EventArgs e)
         {
             gbCalisanSearch.Location = new Point(10, 340);
-
-            KullanicilarSource.Fill();
 
             gbCalisanKontrol.Show();
             gbUrunKontrol.Hide();
@@ -192,8 +186,6 @@ namespace Automation
         {
             gbCalisanSearch.Location = new Point(10, 340);
 
-            KullanicilarSource.Fill();
-
             gbCalisanKontrol.Show();
             gbUrunKontrol.Hide();
             gbStokKontrol.Hide();
@@ -218,8 +210,6 @@ namespace Automation
         private void calisanSil_Click(object sender, EventArgs e)
         {
             gbCalisanSearch.Location = new Point(10, 340);
-
-            KullanicilarSource.Fill();
 
             gbCalisanKontrol.Show();
             gbUrunKontrol.Hide();
@@ -464,8 +454,6 @@ namespace Automation
         {
             urunBulmagb.Location = new Point(10, 10);
 
-            UrunlerSource.Fill();
-
             gbCalisanKontrol.Hide();
             gbUrunKontrol.Show();
             gbStokKontrol.Hide();
@@ -486,8 +474,6 @@ namespace Automation
         {
             urunBulmagb.Location = new Point(10, 260);
 
-            UrunlerSource.Fill();
-
             gbCalisanKontrol.Hide();
             gbUrunKontrol.Show();
             gbStokKontrol.Hide();
@@ -504,15 +490,12 @@ namespace Automation
             degistirbtn.Hide();
 
             urunEditList.Hide();
-            UrunlerSource.Fill();
             UrunTemizle();
         }
         // Yan panel ürün düzenleme butonu
         private void urunDuzenle_Click(object sender, EventArgs e)
         {
             urunBulmagb.Location = new Point(10, 260);
-
-            UrunlerSource.Fill();
 
             gbCalisanKontrol.Hide();
             gbUrunKontrol.Show();
@@ -530,15 +513,12 @@ namespace Automation
             degistirbtn.Show();
 
             urunEditList.Show();
-            UrunlerSource.Fill();
             UrunTemizle();
         }
         // Yan panel ürün silme butonu
         private void urunSil_Click(object sender, EventArgs e)
         {
             urunBulmagb.Location = new Point(10, 260);
-
-            UrunlerSource.Fill();
 
             gbCalisanKontrol.Hide();
             gbUrunKontrol.Show();           
@@ -556,7 +536,6 @@ namespace Automation
             degistirbtn.Hide();
 
             urunEditList.Show();
-            UrunlerSource.Fill();
             UrunTemizle();
         }
         #endregion
@@ -949,6 +928,17 @@ namespace Automation
             gbHesapAyari.Hide();
 
             SatisTemizle();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                using (var command = new SQLiteCommand(urunSelectCmd, connection))
+                {
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                    DataTable datatable = new DataTable();
+                    adapter.SelectCommand = command;
+                    adapter.Fill(datatable);
+                    gcSatisListe.DataSource = datatable;
+                }
+            }
         }
 
         private void satisSil_Click(object sender, EventArgs e)
@@ -963,9 +953,10 @@ namespace Automation
 
             btnSatisListeleme.Hide();
             btnSatisIptal.Show();
+            gbSatisListeSecim.Visible = true;
             gbSatisHesap.Hide();
+            SatisGuncelle();
             SatisTemizle();
-            SatislarSource.Fill();
         }
 
         private void satisListele_Click(object sender, EventArgs e)
@@ -978,10 +969,13 @@ namespace Automation
             gbHesapAyari.Hide();
 
             btnSatisListeleme.Show();
+            gbSatisHesap.Location = new Point(10,120);
+            btnSatisListeleme.Location = new Point(90, 280);
+            gbSatisListeSecim.Visible = false;
             gbSatisHesap.Show();
             btnSatisIptal.Hide();
+            SatisGuncelle();
             SatisTemizle();
-            SatislarSource.Fill();
         }
 
 
@@ -1072,7 +1066,15 @@ namespace Automation
                     MessageBox.Show("Sipariş Başarıyla Oluşturuldu.");
                     urun.Stok -= satis;
                     urun.Degistir();
-                    SatisGuncelle();
+
+                    using (var command = new SQLiteCommand(urunSelectCmd, connection))
+                    {
+                        SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                        DataTable datatable = new DataTable();
+                        adapter.SelectCommand = command;
+                        adapter.Fill(datatable);
+                        gcSatisListe.DataSource = datatable;
+                    }
                 }
             }
             catch (SQLiteException ex)
@@ -1154,9 +1156,8 @@ namespace Automation
                 urunUpdate.Parameters.AddWithValue("@Id", satis.UrunId);
                 urunUpdate.ExecuteNonQuery();
                 MessageBox.Show("Sipariş Başarıyla Iptal Edildi");
-
-                SatislarSource.Fill();
             }
+            SatisGuncelle();
             SatisTemizle();
 
         }
@@ -1418,9 +1419,10 @@ namespace Automation
                 using (var command = new SQLiteCommand(kisiSelectCmd, connection))
                 {
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                    DataTable datatable = new DataTable();
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataTable);
-                    calisanList.DataSource = dataTable;
+                    adapter.Fill(datatable);
+                    calisanList.DataSource = datatable;
                 }
             }
         }
@@ -1433,9 +1435,10 @@ namespace Automation
                 using (var command = new SQLiteCommand(urunSelectCmd, connection))
                 {
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                    DataTable datatable = new DataTable();
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataTable);
-                    urunEditList.DataSource = dataTable;
+                    adapter.Fill(datatable);
+                    urunEditList.DataSource = datatable;
                 }
             }
         }
@@ -1448,9 +1451,10 @@ namespace Automation
                 using (var command = new SQLiteCommand(urunSelectCmd, connection))
                 {
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                    DataTable datatable = new DataTable();
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataTable);
-                    gcStokList.DataSource = dataTable;
+                    adapter.Fill(datatable);
+                    gcStokList.DataSource = datatable;
                 }
             }
         }
@@ -1459,12 +1463,13 @@ namespace Automation
         {
             using (var connection = new SQLiteConnection(connectionString))
             {
-                using (var command = new SQLiteCommand(urunSelectCmd, connection))
+                using (var command = new SQLiteCommand(satisListeleCmd, connection))
                 {
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+                    DataTable datatable = new DataTable();
                     adapter.SelectCommand = command;
-                    adapter.Fill(dataTable);
-                    gcSatisListe.DataSource = dataTable;
+                    adapter.Fill(datatable);
+                    gcSatislar.DataSource = datatable;
                 }
             }
         }
@@ -1518,7 +1523,7 @@ namespace Automation
 
 
 
-        // Form Kapandığında uygulama Sonlanır
+        // Form Kapandığında Uygulama Sonlanır
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -1529,7 +1534,5 @@ namespace Automation
         {
             Application.Exit();
         }
-
-      
     }
 }

@@ -13,14 +13,16 @@ namespace Automation
 {
     public partial class loginScreen : Form
     {
+        // Veritabanı Bağlantısı
+        string path = @"Data Source= ..\..\database.db; version=3;";
 
-        string path = @"Data Source = ..\..\Database\database.db; verison = 3;";
+
 
         public loginScreen()
         {
             InitializeComponent();
         }
-
+        // Giriş Butonuna Basılma Olayı
         private void loginbtn_Click(object sender, EventArgs e)
         {
             string cmd = @"SELECT * FROM Kullanicilar WHERE KullaniciAdi = @username";
@@ -106,6 +108,7 @@ namespace Automation
 
 
         }
+        // 'Şifreyi Göster' Kutusu
         private void loginSifrecheck_CheckedChanged(object sender, EventArgs e)
         {
             var checkbox = (CheckBox)sender;
@@ -120,7 +123,7 @@ namespace Automation
         }
 
 
-
+        // 'Enter' Tuşuna Basıldığında Giriş Butonuna Basma Eylemini Gerçekleştiren Metot
         private void sifretb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
