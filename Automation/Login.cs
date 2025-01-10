@@ -14,7 +14,7 @@ namespace Automation
     public partial class loginScreen : Form
     {
         // Veritabanı Bağlantısı
-        string path = @"Data Source= ..\..\database.db; version=3;";
+        string path = @"Data Source= ..\..database.db; version=3;";
 
 
 

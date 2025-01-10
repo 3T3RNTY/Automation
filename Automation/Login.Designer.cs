@@ -35,6 +35,7 @@
             this.sifretb = new System.Windows.Forms.TextBox();
             this.loginSifrecheck = new System.Windows.Forms.CheckBox();
             this.loginbtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,12 +117,22 @@
             this.loginbtn.UseVisualStyleBackColor = true;
             this.loginbtn.Click += new System.EventHandler(this.loginbtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(321, 230);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Müdür - 12345\r\n";
+            // 
             // loginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(531, 504);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.loginbtn);
             this.Controls.Add(this.loginSifrecheck);
             this.Controls.Add(this.sifretb);
@@ -148,5 +159,6 @@
         private System.Windows.Forms.TextBox sifretb;
         private System.Windows.Forms.CheckBox loginSifrecheck;
         private System.Windows.Forms.Button loginbtn;
+        private System.Windows.Forms.Label label1;
     }
 }

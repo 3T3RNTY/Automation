@@ -21,8 +21,9 @@ namespace Automation
 
         // Veritabanı Bağlantı Adresi
        
-        string connectionString = @"Data Source= ..\..\database.db; version=3;";
-
+        string connectionString = @"..\..Data Source= database.db; version=3;";
+       
+        // Kullanıcının Pozisyonuna göre Sahip Olduğu Yetki Seviyesi
         int yetki = 0;       
 
         // Veritabanı Tablolarından Bilgi Alma Query'leri
@@ -34,6 +35,7 @@ namespace Automation
         {
             InitializeComponent();
 
+            // Kullanıcının Pozisyonuna göre Yetki Seviyesi Tanımlanması
             this.kullanici = kullanici;
             switch (kullanici.Pozisyon)
             {
@@ -1409,8 +1411,6 @@ namespace Automation
 
         #endregion
 
-
-
         // Çalışan Listesini Güncelleyen Metot
         public void KisiGuncelle()
         {
@@ -1475,7 +1475,6 @@ namespace Automation
         }
         
 
-
         // Kişi Işleminden Sonra Girdileri Temizleyen Metot
         public void KisiTemizle()
         {
@@ -1520,7 +1519,6 @@ namespace Automation
             tbSatisSecim.Text = "";
             tbSatisToplam.Text = "";
         }
-
 
 
         // Form Kapandığında Uygulama Sonlanır

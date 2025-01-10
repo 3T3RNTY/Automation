@@ -465,7 +465,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7D365B4E9EE244149346A8824A67BEE8"
+        "MsmKey" = "8:_7B9DF807A8FB4B91B85B71EFD00B944E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1558,9 +1558,9 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D365B4E9EE244149346A8824A67BEE8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7B9DF807A8FB4B91B85B71EFD00B944E"
             {
-            "SourcePath" = "8:..\\Automation\\bin\\Database\\database.db"
+            "SourcePath" = "8:..\\Automation\\database.db"
             "TargetName" = "8:database.db"
             "Tag" = "8:"
             "Folder" = "8:_7219DB1B2308461985E49B7309300EAE"
@@ -2068,15 +2068,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
-        "ProductCode" = "8:{B5560871-EC80-4512-82B1-29166378E3F0}"
-        "PackageCode" = "8:{B3475BE0-DF22-486E-8ECE-367230D164CF}"
+        "ProductCode" = "8:{18AC0078-A217-4606-B73D-DB361FDE3DDF}"
+        "PackageCode" = "8:{768208EC-ABC4-4F7F-9DC7-D03BED22339A}"
         "UpgradeCode" = "8:{4AEEDC84-A17D-49D3-B764-587831F21C2B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.7"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Emirhan Bayrak"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

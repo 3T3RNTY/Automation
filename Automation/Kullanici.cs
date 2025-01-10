@@ -10,7 +10,7 @@ namespace Automation
     public class Kullanici
     {
         // Veritabanı Bağlantısı
-        string connectionString = @"Data Source= ..\..\database.db; version=3;";
+        string connectionString = @"Data Source= ..\..database.db; version=3;";
 
         private int id;
         private string kullaniciAdi;
